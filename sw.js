@@ -1,5 +1,5 @@
 /* Offline cache for the Busy Book. Bump VERSION whenever any file changes. */
-const VERSION = 'busy-book-v2';
+const VERSION = 'busy-book-v3';
 const FILES = [
   './', 'index.html', 'manifest.json', 'home-button.js',
   'icons/icon-180.png', 'icons/icon-512.png', 'icons/lion-home.webp', 'icons/panda-home.webp',
