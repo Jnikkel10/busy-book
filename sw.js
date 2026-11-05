@@ -1,8 +1,8 @@
 /* Offline cache for the Busy Book. Bump VERSION whenever any file changes. */
-const VERSION = 'busy-book-v1';
+const VERSION = 'busy-book-v2';
 const FILES = [
   './', 'index.html', 'manifest.json', 'home-button.js',
-  'icons/icon-180.png', 'icons/icon-512.png', 'icons/panda-tile.svg', 'icons/lion-tile.webp',
+  'icons/icon-180.png', 'icons/icon-512.png', 'icons/lion-home.webp', 'icons/panda-home.webp',
   'fonts/poppins-latin-600-normal.woff2', 'fonts/poppins-latin-900-normal.woff2',
   'lion/index.html', 'lion/data.js',
   'lion/assets/lion-dance.mp4', 'lion/assets/party.mp4',

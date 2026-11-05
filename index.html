@@ -18,40 +18,39 @@ body{background:var(--bg);overflow:hidden;overscroll-behavior:none;touch-action:
   -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;-webkit-tap-highlight-color:transparent;
   display:grid;place-items:center;
   padding:env(safe-area-inset-top,0) env(safe-area-inset-right,0) env(safe-area-inset-bottom,0) env(safe-area-inset-left,0);box-sizing:border-box}
-main{display:flex;gap:4vmin;align-items:center;justify-content:center;width:100%;padding:0 4vmin;box-sizing:border-box}
-.tile{position:relative;flex:1 1 0;max-width:46vw;aspect-ratio:3/2;border:6px solid var(--plum);border-radius:5vmin;
-  overflow:hidden;cursor:pointer;padding:0;box-shadow:0 1.4vmin 0 rgba(74,46,58,.22);
+@font-face{font-family:"Poppins";font-weight:900;font-display:block;src:url(fonts/poppins-latin-900-normal.woff2) format("woff2")}
+main{display:flex;gap:4vmin;align-items:flex-start;justify-content:center;width:100%;padding:0 4vmin;box-sizing:border-box}
+.game{flex:1 1 0;max-width:46vw;display:flex;flex-direction:column;align-items:center;gap:1.6vmin}
+.tile{position:relative;display:block;width:100%;aspect-ratio:3/2;border:6px solid var(--plum);border-radius:5vmin;
+  overflow:hidden;cursor:pointer;padding:0;background:var(--sky);box-shadow:0 1.4vmin 0 rgba(74,46,58,.22);
   animation:bob 3s ease-in-out infinite alternate}
-.tile:nth-child(2){animation-delay:-1.5s}
-.tile img{position:absolute;left:50%;bottom:-2%;height:104%;transform:translateX(-50%);pointer-events:none}
-#lionTile{background:var(--sky)}
-#pandaTile{background:var(--lav)}
-#pandaTile img{height:92%;bottom:2%}
-.stars{position:absolute;inset:0;pointer-events:none}
+.game:nth-child(2) .tile{animation-delay:-1.5s;background:var(--lav)}
+.tile img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;pointer-events:none}
+.name{width:92%;height:auto;overflow:visible;pointer-events:none}
+.name text{font-family:"Poppins","Arial Black",sans-serif;font-weight:900;font-size:104px;letter-spacing:4px;
+  fill:var(--cream);stroke:var(--plum);stroke-width:16px;paint-order:stroke fill;stroke-linejoin:round}
 .tile.go{animation:squash .45s ease forwards}
 @keyframes bob{from{transform:translateY(-.6vmin)}to{transform:translateY(.6vmin)}}
 @keyframes squash{0%{transform:scale(1)}30%{transform:scale(1.08,.9)}60%{transform:scale(.94,1.08) translateY(-3vmin)}100%{transform:scale(1.04)}}
 #status{position:fixed;left:0;right:0;bottom:calc(8px + env(safe-area-inset-bottom,0));text-align:center;
   font:600 13px/1.2 -apple-system,system-ui,sans-serif;color:rgba(74,46,58,.55)}
-@media (orientation:portrait){main{flex-direction:column}.tile{max-width:84vw;width:84vw;flex:none}}
+@media (orientation:portrait){main{flex-direction:column;align-items:center}.game{max-width:80vw;width:80vw;flex:none}}
 </style>
 </head>
 <body>
 <main>
-  <button class="tile" id="lionTile" data-href="lion/index.html" aria-label="Lion's Letter Hunt">
-    <img src="icons/lion-tile.webp" alt="" draggable="false">
-  </button>
-  <button class="tile" id="pandaTile" data-href="panda/index.html" aria-label="Panda's Planet Tour">
-    <svg class="stars" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
-      <g fill="#FFF3B0" stroke="#4A2E3A" stroke-width="1.5" stroke-linejoin="round">
-        <path d="M30 30l3 7 7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/>
-        <path d="M262 24l2.5 6 6 .8-4.3 4.2.9 6-5.1-2.8-5.1 2.8.9-6-4.3-4.2 6-.8z"/>
-        <path d="M250 150l2 5 5 .6-3.6 3.5.8 5-4.2-2.3-4.2 2.3.8-5-3.6-3.5 5-.6z"/>
-        <path d="M44 140l2 5 5 .6-3.6 3.5.8 5-4.2-2.3-4.2 2.3.8-5-3.6-3.5 5-.6z"/>
-      </g>
-    </svg>
-    <img src="icons/panda-tile.svg" alt="" draggable="false">
-  </button>
+  <div class="game">
+    <button class="tile" id="lionTile" data-href="lion/index.html" aria-label="Lion's Letters">
+      <img src="icons/lion-home.webp" alt="" draggable="false">
+    </button>
+    <svg class="name" viewBox="0 0 1000 150" aria-hidden="true"><text x="500" y="112" text-anchor="middle">Lion's Letters</text></svg>
+  </div>
+  <div class="game">
+    <button class="tile" id="pandaTile" data-href="panda/index.html" aria-label="Panda's Planets">
+      <img src="icons/panda-home.webp" alt="" draggable="false">
+    </button>
+    <svg class="name" viewBox="0 0 1000 150" aria-hidden="true"><text x="500" y="112" text-anchor="middle">Panda's Planets</text></svg>
+  </div>
 </main>
 <div id="status">Getting ready for offline…</div>
 <script>
